@@ -1,13 +1,20 @@
 console.log("notes file printing!!");
 //module.exports.age=33;
-module.exports.addNote = () => {
-  console.log("add note");
-  return "new note";
+ var addNote = (title,body) => {
+  console.log("adding  notes",title,body);
 };
-module.exports.add = (a,b) => {
-  return a + b;
+var getAll = () => {
+console.log('getting all notes')
 };
-
-module.exports.div = (a,b) => {
-  return a / b;
+var readAll = () => {
+  console.log('reading all notes');
 };
+var removeNote = (title) => {
+  console.log('removing note',title);
+};
+ module.exports = {
+   addNote,
+   getAll,
+   readAll,
+   removeNote
+ };

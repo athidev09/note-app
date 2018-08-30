@@ -1,56 +1,24 @@
 console.log('Starting app');
- const fs = require('fs');
+ // const fs = require('fs');
  const _ = require('lodash');
-
- //console.log(_.isString(true));
-// console.log(_.isString('Verint'));
-
-
-var filteredArray = _.uniq([1,2,3,3,3,1,1,2,'Apple',1,2,3,'Apple']);
-console.log(filteredArray);
-
-
+ const os = require('os');
+ const yargs = require('yargs');
+ const notes = require('./notes');
+const argv = yargs.argv;
+ var command = process.argv[2];
+ console.log('Command:',command);
+console.log('Yargs',argv);
 
 
 
-
-
-
-
-
-//const notes = require('./notes');
-//console.log('Result',notes.div(9,3));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//const os = require('os');
-//var user = os.userInfo();
-//console.log(user);
-//console.log(notes);
-//fs.appendFile('greetings.txt','Hello ' + user.username+'!',(err)=>
-//  if (err) throw err;
-  //console.log('The "data to append" was appended to file!');
-//})
+if(command === 'add'){
+  notes.addNote(argv.title,argv.body);
+}else if (command === "list") {
+  notes.getAll();
+}else if (command === "read") {
+  // notes.readAll(argv.title);
+}else if (command === "remove") {
+  notes.removeNote(argv.title);
+}else {
+  console.log("I do not recognize the command");
+};
